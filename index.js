@@ -85,7 +85,14 @@ let subscriptions = [
   /////////////////////////////////////////////////////////////////
   
   
-  let cancelSubscriptions = function(){
+  let cancelSubscriptions = function(array){
+   for (var i = 0; i < array.length; i++){
+      if (array[i].cost > 10)  {
+        if (i % 2 !== 0){
+          array[i].cancel = true
+        }
+      }                      
+   }
     
   };
   
@@ -102,8 +109,10 @@ let subscriptions = [
   /////////////////////////////////////////////////////////////////
   
   
-  let subscriptionList = function(){
-   
+  let subscriptionList = function(array){
+    return array.reduce(function(acc, current){
+       return acc + current.name + " - " + current.costPerMonth + "\n"
+    }, "");
   };
   
   
@@ -113,7 +122,9 @@ let subscriptions = [
   // PROBLEM #3 ///////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////
   
-  let getSubscriptionObject = function(){
+  let getSubscriptionObject = function(array, name){
+
+
    
   };
   
@@ -125,8 +136,8 @@ let subscriptions = [
   
   
   
-  let updateSubscription = function(){
-    
+  let updateSubscription = function(object, updates){
+  
   };
   
   
@@ -135,8 +146,10 @@ let subscriptions = [
   // PROBLEM #5 ///////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////
   
-  let getMultipleUsers = function(){
-   
+  let getMultipleUsers = function(array){
+     return array.filter(function(sub){
+      return sub.users.length > 1;
+     });
   }; 
   
   
@@ -146,7 +159,16 @@ let subscriptions = [
   // PROBLEM #6 ///////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////
   
-  let getUsersArray = function(){
+  let getUsersArray = function(array){
+    return array.map(function(sub){
+        const object = {};
+        object.name = sub.name;
+        object.users = sub.users;
+        return object;
+    })
+
+
+
    
   };
   
