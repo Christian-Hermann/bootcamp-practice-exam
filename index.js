@@ -86,9 +86,9 @@ let subscriptions = [
   
   
   let cancelSubscriptions = function(array){
-   for (var i = 0; i < array.length; i++){
-      if (array[i].cost > 10)  {
-        if (i % 2 !== 0){
+   for (let i = 0; i < array.length; i++){
+      if (array[i].costPerMonth > 10)  {
+        if (i % 2 === 0){
           array[i].cancel = true
         }
       }                      
@@ -122,7 +122,7 @@ let subscriptions = [
   // PROBLEM #3 ///////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////
   
-  let getSubscriptionObject = function(array, name){
+  let getSubscriptionObject = function(){
 
 
    
@@ -137,7 +137,12 @@ let subscriptions = [
   
   
   let updateSubscription = function(object, updates){
-  
+    for(let i = 0; i < updates.length; i++){
+        let[property, value] = updates[i];
+        object[property] = value
+    }
+
+    return object;
   };
   
   
